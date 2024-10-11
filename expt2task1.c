@@ -1,6 +1,5 @@
 /*  Name:Mohd Zaid Mashooque Ansari
     Batch:C3
-    ROll number:51
     Experiment 2 TASK 1
     UIN:241P057
     Title:WAP to find if entered number is even or odd */
