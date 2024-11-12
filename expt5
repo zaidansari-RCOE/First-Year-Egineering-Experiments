@@ -11,7 +11,8 @@ int iterative_factorial(int n) {
     int result = 1;
     for (int i = 1; i <= n; i++) {
         result *= i;
-    }
+   
+}
     return result;
 }
 
@@ -21,6 +22,7 @@ int recursive_factorial(int n) {
     } else {
         return n * recursive_factorial(n - 1);
     }
+
 }
 
 int main() {
@@ -39,6 +41,8 @@ int main() {
     printf("Factorial of %d (by Iterative function) is: %d\n", num, iterative_factorial(num));
 
     printf("Factorial of %d (by Recursive function) is: %d\n", num, recursive_factorial(num));
+
+
 
     return 0;
 }
