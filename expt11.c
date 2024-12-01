@@ -1,7 +1,7 @@
 /*Name      :Mohd Zaid Ansari
   UIN       :241P057
   Roll no   :51
-  Expt No   :11 
+  Expt No   :11
   Topic     :WAP to maintain a simple employee database using file handling.
   */
 #include <stdio.h>
@@ -107,14 +107,32 @@ void edit_employee() {
     scanf("%d", &id);
 
     int found = 0;
-    for (int i = 0; fscanf(file, "%d %f %[^\n]", &emp.id, &emp.salary, emp.name) != EOF; i++) {
+    while (fscanf(file, "%d %f %[^\n]", &emp.id, &emp.salary, emp.name) != EOF) {
         if (emp.id == id) {
             found = 1;
-            printf("Enter new Employee Name: ");
-            getchar();
-            gets(emp.name);
-            printf("Enter new Employee Salary: ");
-            scanf("%f", &emp.salary);
+            int edit_choice;
+
+            printf("Employee found!\n");
+            printf("What would you like to edit?\n");
+            printf("1. Name\n");
+            printf("2. Salary\n");
+            printf("Enter your choice: ");
+            scanf("%d", &edit_choice);
+
+            switch (edit_choice) {
+                case 1:
+                    printf("Enter new Employee Name: ");
+                    getchar(); // Consume leftover newline character
+                    gets(emp.name);
+                    break;
+                case 2:
+                    printf("Enter new Employee Salary: ");
+                    scanf("%f", &emp.salary);
+                    break;
+                default:
+                    printf("Invalid choice! No changes made.\n");
+                    continue;
+            }
         }
         fprintf(temp, "%d %.2f %s\n", emp.id, emp.salary, emp.name);
     }
@@ -185,10 +203,21 @@ Enter your choice: 2
 Employee Records:
 ID      Name            Salary
 ---------------------------------
-5       zaid ansari    555.00
+5       zaid ansari    350.00
+2       idris          150.00
 1       khalid         150.00
-3       arhaan         201.00
-2       moin           250.00
+
+Employee Database Menu:
+1. Add Employee Record
+2. Display Employee Records
+3. Delete Employee Record
+4. Edit Employee Record
+5. Exit
+Enter your choice: 1
+Enter Employee ID: 3
+Enter Employee Name: arhaan
+Enter Employee Salary: 200
+Employee record added successfully!
 
 Employee Database Menu:
 1. Add Employee Record
@@ -206,11 +235,45 @@ Employee Database Menu:
 3. Delete Employee Record
 4. Edit Employee Record
 5. Exit
+Enter your choice: 2
+
+Employee Records:
+ID      Name            Salary
+---------------------------------
+5       zaid ansari    350.00
+1       khalid         150.00
+3       arhaan         200.00
+
+Employee Database Menu:
+1. Add Employee Record
+2. Display Employee Records
+3. Delete Employee Record
+4. Edit Employee Record
+5. Exit
 Enter your choice: 4
-Enter Employee ID to edit: 1
-Enter new Employee Name: khalid
-Enter new Employee Salary: 300
+Enter Employee ID to edit: 5
+Employee found!
+What would you like to edit?
+1. Name
+2. Salary
+Enter your choice: 2
+Enter new Employee Salary: 250
 Employee record edited successfully!
+
+Employee Database Menu:
+1. Add Employee Record
+2. Display Employee Records
+3. Delete Employee Record
+4. Edit Employee Record
+5. Exit
+Enter your choice: 2
+
+Employee Records:
+ID      Name            Salary
+---------------------------------
+5       zaid ansari    250.00
+1       khalid         150.00
+3       arhaan         200.00
 
 Employee Database Menu:
 1. Add Employee Record
@@ -221,6 +284,5 @@ Employee Database Menu:
 Enter your choice: 5
 Exiting the program.
 
-Process returned 0 (0x0)   execution time : 40.315 s
+Process returned 0 (0x0)   execution time : 59.770 s
 Press any key to continue.
-*/
